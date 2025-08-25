@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
-      "destination": "https://saifullah-siddique-info.vercel.app/$1",
+      "source": "https://www.saifullah-siddique-info.vercel.app/:path*",
+      "destination": "https://saifullah-siddique-info.vercel.app/:path*",
       "permanent": true
     }
   ],
