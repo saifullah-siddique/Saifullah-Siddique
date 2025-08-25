@@ -1,19 +1,9 @@
 {
-  "redirects": [
-    {
-      "source": "https://www.saifullah-siddique-info.vercel.app/:path*",
-      "destination": "https://saifullah-siddique-info.vercel.app/:path*",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)\\.(jpg|jpeg|png|gif|svg|ico|css|js)$",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]
