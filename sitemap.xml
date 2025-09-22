@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home Page -->
   <url>
-    <loc>https://saifullah-siddique-info.vercel.app/</loc>
+    <loc>https://saifullahsiddique.in/</loc>
     <lastmod>2025-08-26</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- About Section -->
   <url>
-    <loc>https://saifullah-siddique-info.vercel.app/#about</loc>
+    <loc>https://saifullahsiddique.in/#about</loc>
     <lastmod>2025-08-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Projects Section -->
   <url>
-    <loc>https://saifullah-siddique-info.vercel.app/#projects</loc>
+    <loc>https://saifullahsiddique.in/#projects</loc>
     <lastmod>2025-08-26</lastmod>
     <priority>0.8</priority>
   </url>
 
   <!-- Contact Section -->
   <url>
-    <loc>https://saifullah-siddique-info.vercel.app/#contact</loc>
+    <loc>https://saifullahsiddique.in/#contact</loc>
     <lastmod>2025-08-26</lastmod>
     <priority>0.6</priority>
   </url>
