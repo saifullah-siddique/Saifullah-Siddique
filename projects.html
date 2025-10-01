@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags for Projects Page -->
+    <title>Projects | Saifullah Siddique</title>
+    <meta name="description" content="Explore a collection of web development projects by Saifullah Siddique, showcasing skills in Node.js, Express, JavaScript, and more.">
+    <link rel="canonical" href="https://saifullahsiddique.in/projects">
+    <meta name="author" content="Saifullah Siddique">
+
+    <!-- Favicon links (pointing to root) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Icons & Fonts -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+
+    <style>
+        /* --- Root Variables & Global Styles (from main theme) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display.swap');
+
+        :root {
+            --bg-color: #050505;
+            --surface-color: #111111;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-text: #EAEAEA;
+            --secondary-text: #888888;
+            --accent-color: #14B8A6; /* Main theme's Teal */
+            --accent-glow: rgba(20, 184, 166, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            font-family: 'Inter', sans-serif;
+            cursor: none;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Main Reusable Components (from main theme) --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .main-header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            transition: padding 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .main-header.scrolled {
+            padding: 0.75rem 0;
+            background-color: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .main-header .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--primary-text);
+        }
+
+        .contact-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 99px;
+            text-decoration: none;
+            color: var(--primary-text);
+            font-weight: 500;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .main-footer {
+            padding: 4rem 0 2rem 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: var(--secondary-text);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Custom Cursor (from main theme) --- */
+        .cursor-dot, .cursor-glow {
+            position: fixed; top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%; pointer-events: none; z-index: 9999;
+            transition: transform 0.2s ease-out, opacity 0.3s ease;
+        }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--accent-color); }
+        .cursor-glow { width: 40px; height: 40px; background-image: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); }
+        .cursor-dot.hidden, .cursor-glow.hidden { opacity: 0; }
+
+        /* --- Projects Page Specific Styles --- */
+        .page-hero {
+            text-align: center;
+            padding: 8rem 0 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 4rem;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.6));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--secondary-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content p {
+            color: var(--secondary-text);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* --- Button Styles --- */
+        .card-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: auto; /* Pushes buttons to the bottom */
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            font-size: 0.9rem;
+        }
+        
+        .btn i {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background-color: #10a08f;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary-text);
+            border-color: var(--border-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--surface-color);
+            color: var(--primary-text);
+            border-color: var(--accent-color);
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Main Header (from theme) -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="/" class="logo">Saifullah Siddique</a>
+            <a href="/#contact" class="contact-btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="page-hero">
+            <h1>My Work & Projects</h1>
+            <p>A selection of projects that highlight my skills in web development, problem-solving, and creating user-friendly digital experiences.</p>
+        </header>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <img src="../assets/images/project-instagram.webp" alt="Instagram Profile Viewer project preview">
+                <div class="card-content">
+                    <h3>Instagram Profile Viewer</h3>
+                    <p>A server-side rendered tool using Node.js and EJS to fetch and display profile data from an external API.</p>
+                    <div class="card-buttons">
+                        <a href="/projects/instagram-profile-viewer.html" class="btn btn-primary"><i data-feather="file-text"></i> Case Study</a>
+                        <a href="https://instagram-profile-viewer-oubw.onrender.com/" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="external-link"></i> Live</a>
+                        <a href="https://github.com/Saifullah-Siddique/Instagram-Profile-Viewer/blob/for-source/" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card">
+                <img src="../assets/images/project-university.webp" alt="University Finder project preview">
+                <div class="card-content">
+                    <h3>University Finder</h3>
+                    <p>An intuitive search app built with API integration to find details about universities worldwide.</p>
+                    <div class="card-buttons">
+                        <a href="#" class="btn btn-primary"><i data-feather="file-text"></i> Case Study</a>
+                        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="external-link"></i> Live</a>
+                        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card">
+                <img src="../assets/images/project-simon.webp" alt="Simon Says Game project preview">
+                <div class="card-content">
+                    <h3>Simon Says Game</h3>
+                    <p>A classic memory game created with vanilla JavaScript to showcase DOM manipulation and game logic.</p>
+                    <div class="card-buttons">
+                        <a href="#" class="btn btn-primary"><i data-feather="file-text"></i> Case Study</a>
+                        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="external-link"></i> Live</a>
+                        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <img src="../assets/images/project-spotify.webp" alt="Spotify Clone project preview">
+                <div class="card-content">
+                    <h3>Spotify Clone</h3>
+                    <p>A pixel-perfect static clone of the Spotify UI, focusing purely on advanced HTML and CSS layout techniques.</p>
+                    <div class="card-buttons">
+                        <a href="#" class="btn btn-primary"><i data-feather="file-text"></i> Case Study</a>
+                        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="external-link"></i> Live</a>
+                        <a href="#" target="_blank" rel="noopener" class="btn btn-secondary"><i data-feather="github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Main Footer (from theme) -->
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/siddique-saifullah" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://instagram.com/saiflearns" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p>&copy; 2025 Saifullah Siddique. All rights reserved.</p>
+    </footer>
+
+    <!-- Link to the main JS file for cursor and header effects -->
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
+
