@@ -1,11 +1,12 @@
 /* ==========================================================================
-   1. Root Variables & Global Styles
+   1.0 DESIGN TOKENS & SETUP
    ========================================================================== */
 
 /* Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
+  /* Colors */
   --bg-color: #050505;
   --surface-color: #111111;
   --border-color: rgba(255, 255, 255, 0.1);
@@ -13,7 +14,28 @@
   --secondary-text: #888888;
   --accent-color: #14B8A6; /* Vibrant Teal */
   --accent-glow: rgba(20, 184, 166, 0.3);
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  /* Sizing & Spacing */
+  --border-radius-md: 1rem;
+  --border-radius-full: 99px;
+  --section-padding: 8rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
 }
+
+
+/* ==========================================================================
+   2.0 GLOBAL STYLES & RESETS
+   ========================================================================== */
 
 * {
   margin: 0;
@@ -28,7 +50,9 @@ html {
 body {
   background-color: var(--bg-color);
   color: var(--primary-text);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   cursor: none;
 }
 
@@ -38,16 +62,25 @@ body {
   padding: 0 2rem;
 }
 
-/* Make links and buttons show the hand pointer */
-a, .contact-btn {
+/* Base styles for interactive elements */
+a, button {
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Accessibility: Visible focus states */
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
 }
 
 
 /* ==========================================================================
-   2. Custom Cursor
+   3.0 COMPONENTS
    ========================================================================== */
 
+/* 3.1 Custom Cursor */
 .cursor-dot,
 .cursor-glow {
   position: fixed;
@@ -57,13 +90,7 @@ a, .contact-btn {
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Added opacity transition */
-}
-
-/* FIX: Class to hide cursor on hover of interactive elements */
-.cursor-dot.hidden,
-.cursor-glow.hidden {
-  opacity: 0;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 .cursor-dot {
@@ -78,6 +105,11 @@ a, .contact-btn {
   background-image: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
 }
 
+.cursor-dot.hidden,
+.cursor-glow.hidden {
+  opacity: 0;
+}
+
 .cursor-dot.grow {
   transform: translate(-50%, -50%) scale(4);
 }
@@ -86,16 +118,13 @@ a, .contact-btn {
   transform: translate(-50%, -50%) scale(2);
 }
 
-/* ==========================================================================
-   3. Header & Navigation
-   ========================================================================== */
-
+/* 3.2 Header */
 .main-header {
   padding: 1.5rem 0;
   position: fixed;
   width: 100%;
   z-index: 100;
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+  transition: background-color var(--transition-medium), backdrop-filter var(--transition-medium), padding var(--transition-medium);
 }
 
 .main-header.scrolled {
@@ -113,15 +142,35 @@ a, .contact-btn {
 
 .logo {
   font-size: 1.25rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: var(--primary-text);
-  transition: font-size 0.3s ease;
+  font-weight: var(--fw-bold);
+  transition: font-size var(--transition-medium);
 }
 
 .main-header.scrolled .logo {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
+
+.main-header.scrolled .contact-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* 3.3 Reusable Button Component */
+.btn {
+  display: inline-block;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius-full);
+  font-weight: var(--fw-medium);
+  transition: background var(--transition-fast), color var(--transition-fast), padding var(--transition-medium), font-size var(--transition-medium);
+}
+
+.btn:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
 
 .contact-btn {
   background: var(--surface-color);
@@ -134,32 +183,37 @@ a, .contact-btn {
   transition: background 0.2s ease, color 0.2s ease, padding 0.3s ease, font-size 0.3s ease;
 }
 
-.main-header.scrolled .contact-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-}
-
 .contact-btn:hover {
   background: var(--accent-color);
   color: var(--bg-color);
 }
 
-/* ==========================================================================
-   4. Page Sections
-   ========================================================================== */
 
+
+/* Modifier for header button shrink effect */
+.main-header.scrolled .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* 3.4 Page Sections */
 .section {
-  padding: 8rem 0;
+  padding: var(--section-padding) 0;
 }
 
 .section-title {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: var(--fw-medium);
   color: var(--secondary-text);
   margin-bottom: 2rem;
 }
 
-/* Hero Section */
+
+/* ==========================================================================
+   4.0 PAGE-SPECIFIC SECTIONS
+   ========================================================================== */
+
+/* 4.1 Hero Section */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -169,7 +223,7 @@ a, .contact-btn {
 
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 6rem);
-  font-weight: 800;
+  font-weight: var(--fw-black);
   line-height: 1.1;
   background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.4));
   -webkit-background-clip: text;
@@ -180,15 +234,12 @@ a, .contact-btn {
 .hero-tagline {
   font-size: clamp(1rem, 3vw, 1.25rem);
   color: var(--secondary-text);
-  margin-top: 1.5rem;
+  margin: 1.5rem auto 0;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  animation: slide-in 1s ease-out 0.2s;
-  animation-fill-mode: backwards;
+  animation: slide-in 1s ease-out 0.2s backwards;
 }
 
-/* About Section (Bento Grid) */
+/* 4.2 About Section (Bento Grid) */
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -198,9 +249,9 @@ a, .contact-btn {
 .bento-item {
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
-  border-radius: 1rem;
+  border-radius: var(--border-radius-md);
   padding: 1.5rem;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-medium);
 }
 
 .bento-item:hover {
@@ -221,30 +272,13 @@ a, .contact-btn {
   object-fit: cover;
 }
 
-.bento-item.profile h3 {
-  font-size: 1.5rem;
-}
+.bento-item.profile h3 { font-size: 1.5rem; }
+.bento-item.profile p { color: var(--secondary-text); }
+.bento-item.focus { grid-column: span 2; }
+.bento-item.focus p, .bento-item.about { line-height: 1.8; }
+.bento-item.about { grid-column: span 4; font-size: 1.1rem; }
 
-.bento-item.profile p {
-  color: var(--secondary-text);
-}
-
-.bento-item.focus {
-  grid-column: span 2;
-}
-
-.bento-item.focus p {
-  line-height: 1.8;
-}
-
-.bento-item.about {
-  grid-column: span 4;
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--secondary-text);
-}
-
-/* Technology Section */
+/* 4.3 Technology Section */
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -254,7 +288,7 @@ a, .contact-btn {
 .tech-category {
   background: var(--surface-color);
   border: 1px solid var(--border-color);
-  border-radius: 1rem;
+  border-radius: var(--border-radius-md);
   padding: 1.5rem;
 }
 
@@ -281,7 +315,7 @@ a, .contact-btn {
   padding: 0.4rem 0.8rem;
   border-radius: 6px;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: var(--fw-medium);
 }
 
 .tech-list i {
@@ -289,45 +323,79 @@ a, .contact-btn {
   color: var(--secondary-text);
 }
 
-/* Projects Section */
+/* 4.4 Projects Section */
 .project-list {
-  list-style: none;
-}
-
-.project-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
+    list-style: none;
+    border-top: 1px solid var(--border-color);
 }
 
 .project-item {
-  padding: 2.5rem 0;
-  border-bottom: 1px solid var(--border-color);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: background 0.3s ease;
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    transition: background var(--transition-medium), transform var(--transition-medium);
 }
 
 .project-item:hover {
-  background: var(--surface-color);
+    background: var(--surface-color);
+    transform: scale(1.02);
 }
 
-.project-item h3 {
-  font-size: clamp(1.5rem, 5vw, 3rem);
-  font-weight: 600;
+.project-content {
+    flex: 1;
 }
 
-.project-item p {
-  color: var(--secondary-text);
+.project-content h3 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: var(--fw-bold);
+    margin-bottom: 0.5rem;
+}
+
+.project-title-link {
+    transition: color var(--transition-medium);
+}
+
+.project-title-link:hover {
+    color: var(--accent-color);
+}
+
+.project-content p {
+    color: var(--secondary-text);
+    max-width: 60ch;
+}
+
+.project-case-study {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-text);
+    font-weight: var(--fw-medium);
+    white-space: nowrap;
+    transition: color var(--transition-medium), gap var(--transition-medium);
+}
+
+.project-case-study i {
+    transition: transform var(--transition-medium);
+}
+
+.project-case-study:hover {
+    color: var(--primary-text);
+    gap: 1rem;
+}
+
+.project-case-study:hover i {
+    transform: translateX(5px);
 }
 
 .view-all-projects {
-  text-align: center;
-  margin-top: 3rem;
+    text-align: center;
+    margin-top: 3rem;
 }
 
-/* CTA Section */
+/* 4.5 CTA Section */
 .cta-section {
   text-align: center;
 }
@@ -345,10 +413,7 @@ a, .contact-btn {
   margin-right: auto;
 }
 
-/* ==========================================================================
-   5. Footer
-   ========================================================================== */
-
+/* 4.6 Footer */
 .main-footer {
   padding: 4rem 0;
   text-align: center;
@@ -363,18 +428,18 @@ a, .contact-btn {
 }
 
 .footer-links a {
-  text-decoration: none;
+  font-weight: var(--fw-medium);
   color: var(--secondary-text);
-  font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 .footer-links a:hover {
   color: var(--accent-color);
 }
 
+
 /* ==========================================================================
-   6. Effects & Animations
+   5.0 EFFECTS & ANIMATIONS
    ========================================================================== */
 
 .project-preview {
@@ -383,19 +448,17 @@ a, .contact-btn {
   left: 0;
   width: 300px;
   height: 200px;
-  border-radius: 1rem;
+  border-radius: var(--border-radius-md);
   object-fit: cover;
   pointer-events: none;
   opacity: 0;
-  /* FIX: Position preview to the side of the cursor instead of on top of it */
   transform: translate(20px, 20px) scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity var(--transition-medium), transform var(--transition-medium);
   z-index: 99;
 }
 
 .project-preview.visible {
   opacity: 1;
-  /* FIX: Keep the side position when visible */
   transform: translate(20px, 20px) scale(1);
 }
 
@@ -410,10 +473,22 @@ a, .contact-btn {
   }
 }
 
+
 /* ==========================================================================
-   7. Media Queries (Responsive Design)
+   6.0 ACCESSIBILITY & RESPONSIVE DESIGN
    ========================================================================== */
 
+/* 6.1 Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 6.2 Tablet Breakpoint */
 @media (max-width: 900px) {
   .bento-grid {
     grid-template-columns: 1fr 1fr;
@@ -423,6 +498,7 @@ a, .contact-btn {
   }
 }
 
+/* 6.3 Mobile Breakpoint */
 @media (max-width: 768px) {
   body {
     cursor: auto;
@@ -447,4 +523,3 @@ a, .contact-btn {
     font-size: 1.5rem;
   }
 }
-
