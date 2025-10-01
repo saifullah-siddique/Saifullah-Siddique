@@ -3,140 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-
     
-    
+    <!-- Primary Meta Tags -->
     <title>Saifullah Siddique | Full Stack Developer</title>
-    <link rel="icon" type="image/x-icon" href="./assets/images/saifullahsiddique.webp">
-    
     <meta name="description" content="Welcome to the portfolio of Saifullah Siddique, a passionate Full Stack Developer specializing in the MERN stack and Java. Explore my projects and skills.">
-    <meta name="keywords" content="Saifullah Siddique, Full Stack Developer, Saifullah siddiqui,  MERN Stack, Java Developer, Portfolio, Web Developer, Jamia Hamdard">
     <meta name="author" content="Saifullah Siddique">
+    <meta name="keywords" content="Saifullah Siddique, Saifullah Siddiqui, Full Stack Developer, MERN Stack, Java Developer, Portfolio, Web Developer Delhi">
+    <link rel="canonical" href="https://saifullahsiddique.in/">
 
-    <link rel="canonical" href="https://saifullahsiddique.in">
-
-    <meta property="og:title" content="Saifullah Siddique - Full Stack Developer">
-    <meta property="og:description" content="Exploring the digital frontier with code. Check out my work as a MERN stack and Java developer.">
-    <meta property="og:image" content="https://saifullahsiddique.in/path-to-preview-image.jpg"> 
-    <meta property="og:url" content="https://saifullahsiddique.in">
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:title" content="Saifullah Siddique | Full Stack Developer">
+    <meta property="og:description" content="Crafting elegant and efficient solutions for the web.">
+    <meta property="og:image" content="https://saifullahsiddique.in/og-image-info.jpg">
+    <meta property="og:url" content="https://saifullahsiddique.in/">
 
+    <!-- Browser Theme Color for Mobile -->
+    <meta name="theme-color" content="#14B8A6">
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Saifullah Siddique - Full Stack Developer">
-    <meta name="twitter:description" content="Exploring the digital frontier with code. Check out my work as a MERN stack and Java developer.">
-    <meta name="twitter:image" content="https://saifullahsiddique.in/path-to-preview-image.jpg">
 
+    <!-- Favicon & App Icons (Consolidated) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/favicon.ico"> <!-- Fallback for older browsers -->
+
+    <!-- External CSS & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+
+    <!-- SEO: Structured Data (Schema.org) -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Saifullah Siddique",
-            "url": "https://saifullahsiddique.in",
-            "image": "https://saifullahsiddique.in/og-image.png",
-            "jobTitle": "Full-Stack Developer & BCA Student",
-            "description": "Portfolio of Saifullah Siddique, a full-stack developer and BCA student showcasing projects and skills in the MERN stack, Java, and DSA.",
-            "publisher": {
-                "@type": "Person",
-                "name": "Saifullah Siddique",
-                "url": "https://saifullahsiddique.in/info",
-                "sameAs": [
-                    "https://www.instagram.com/saiflearns",
-                    "https://github.com/saifullah-siddique",
-                    "https://www.linkedin.com/in/saifullahsiddique",
-                    "https://x.com/SaifLearns"
-                ]
-            }
-        }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Saifullah Siddique",
+      "url": "https://saifullahsiddique.in/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Saifullah Siddique",
+      "url": "https://saifullahsiddique.in/",
+      "sameAs": [
+        "https://github.com/Saifullah-Siddique",
+        "https://www.linkedin.com/in/siddique-saifullah",
+        "https://instagram.com/saiflearns"
+      ],
+      "jobTitle": "Full Stack Developer"
+    }
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 </head>
 <body>
-    <div class="cursor"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
+  <header class="main-header">
     <div class="container">
-        <h1 class="name"><span id="name-typed"></span></h1>
-        <p class="tagline"><span id="tagline-typed"></span></p>
-
-        <button class="explore-btn" onclick="window.location.href='/info.html'">ENTER <a href="/info.html"></a></button>
-
-        <div class="social-container">
-            <a href="https://www.instagram.com/saiflearns/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="My Instagram Profile">
-                <svg class="social-icon" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-            </a>
-            <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="My GitHub Profile">
-                <svg class="social-icon" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/siddique-saifullah/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="My LinkedIn Profile">
-                 <svg class="social-icon" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-            </a>
-        </div>
+      <a href="#" class="logo">Saifullah Siddique</a>
+      <a href="#contact" class="contact-btn">Get in Touch</a>
     </div>
+  </header>
 
-   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var typedName = new Typed('#name-typed', {
-            strings: ['SAIFULLAH SIDDIQUE'],
-            typeSpeed: 100,
-            backSpeed: 30,
-            startDelay: 500,
-            showCursor: true,
-            cursorChar: '█',
-            loop: false,
-        });
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-title">Developer & Creative Problem-Solver</h1>
+        <p class="hero-tagline">
+          I build fast, reliable, and user-friendly web applications, turning complex ideas into elegant digital solutions.
+        </p>
+      </div>
+    </section>
 
-        var typedTagline = new Typed('#tagline-typed', {
-            strings: [
-                'Code That Shapes the Future.',
-                'Click the ENTER button to explore my work.',
-                'Thank you for visiting my page.',
-                'Follow me on Instagram to learn with me.',
-                'Your support on social media motivates me.'
-            ],
-            typeSpeed: 50,
-            backSpeed: 25,
-            startDelay: 3000,
-            showCursor: true,
-            cursorChar: '█',
-            loop: true,
-        });
+    <section id="about" class="section">
+      <div class="container">
+        <div class="bento-grid">
+          <div class="bento-item profile">
+            <img src="./assets/images/saifullahsiddique.webp" 
+                 alt="Portrait of Saifullah Siddique, a full stack developer from Delhi" loading="lazy">
+            <div>
+              <h3>Saifullah Siddique</h3>
+              <p>BCA Student | Delhi, India</p>
+            </div>
+          </div>
+          <div class="bento-item focus">
+            <h3>Current Focus</h3>
+            <p>
+              My learning is dedicated to the <strong>MERN Stack</strong> for end-to-end development, 
+              alongside a deep dive into <strong>Data Structures & Algorithms in Java</strong>.
+            </p>
+          </div>
+          <div class="bento-item about">
+            As a student pursuing a Bachelor of Computer Applications, I'm deeply immersed in the world of software development. 
+            My passion isn't just in writing code, but in the entire creative process—from a single concept to a fully-deployed application. 
+            I thrive on challenges and am constantly pushing myself to learn new technologies and refine my problem-solving skills to build things that are both functional and beautiful.
+          </div>
+        </div>
+      </div>
+    </section>
 
-        const cursor = document.querySelector('.cursor');
-        const exploreBtn = document.querySelector('.explore-btn');
+    <section id="tech" class="section">
+      <div class="container">
+        <h2 class="section-title">Core Technologies</h2>
+        <div class="tech-grid">
+          <div class="tech-category">
+            <h3>Languages</h3>
+            <ul class="tech-list">
+              <li><i class="devicon-java-plain"></i> Java</li>
+              <li><i class="devicon-javascript-plain"></i> JavaScript</li>
+              <li><i class="devicon-cplusplus-plain"></i> C++</li>
+              <li><i class="devicon-c-plain"></i> C</li>
+            </ul>
+          </div>
+          <div class="tech-category">
+            <h3>Backend</h3>
+            <ul class="tech-list">
+              <li><i class="devicon-nodejs-plain"></i> Node.js</li>
+              <li><i class="devicon-express-original"></i> Express</li>
+            </ul>
+          </div>
+          <div class="tech-category">
+            <h3>Frontend</h3>
+            <ul class="tech-list">
+              <li><i class="devicon-html5-plain"></i> HTML5</li>
+              <li><i class="devicon-css3-plain"></i> CSS3</li>
+              <!-- <li><i class="devicon-react-original"></i> React</li> -->
+            </ul>
+          </div>
+          <div class="tech-category">
+            <h3>Databases</h3>
+            <ul class="tech-list">
+              <li><i class="devicon-mongodb-plain-wordmark"></i> MongoDB</li>
+              <li><i class="devicon-mysql-plain"></i> SQL</li>
+            </ul>
+          </div>
+          <div class="tech-category">
+            <h3>Tools & Platforms</h3>
+            <ul class="tech-list">
+              <li><i class="devicon-git-plain"></i> Git</li>
+              <li><i class="devicon-github-original"></i> GitHub</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        document.addEventListener('mousemove', e => {
-            cursor.setAttribute("style", "top: "+(e.pageY)+"px; left: "+(e.pageX)+"px;")
-        });
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <ul class="project-list">
+          <!-- FIX: Updated data-image paths to match your new .webp files -->
+          <a href="#" class="project-link" aria-label="View Instagram Profile Viewer Project">
+            <li class="project-item" data-image="./assets/images/project-instagram.webp">
+              <div>
+                <h3>Instagram Profile Viewer</h3>
+                <p>A server-side rendered tool using Node.js, Express, and EJS to fetch and display profile data from an external API.</p>
+              </div>
+              <p class="view-project-text">View Project &rarr;</p>
+            </li>
+          </a>
+          <a href="#" class="project-link" aria-label="View University Finder Project">
+            <li class="project-item" data-image="./assets/images/project-university.webp">
+              <div>
+                <h3>University Finder</h3>
+                <p>An intuitive search app built with API integration to find details about universities worldwide.</p>
+              </div>
+              <p class="view-project-text">View Project &rarr;</p>
+            </li>
+          </a>
+          <a href="#" class="project-link" aria-label="View Simon Says Game Project">
+            <li class="project-item" data-image="./assets/images/project-simon.webp">
+              <div>
+                <h3>Simon Says Game</h3>
+                <p>A classic memory game created with vanilla JavaScript to showcase DOM manipulation and game logic skills.</p>
+              </div>
+              <p class="view-project-text">View Project &rarr;</p>
+            </li>
+          </a>
+          <a href="#" class="project-link" aria-label="View Spotify Clone Project">
+            <li class="project-item" data-image="./assets/images/project-spotify.webp">
+              <div>
+                <h3>Spotify Clone</h3>
+                <p>A pixel-perfect static clone of the Spotify UI, focusing purely on advanced HTML and CSS layout techniques.</p>
+              </div>
+              <p class="view-project-text">View Project &rarr;</p>
+            </li>
+          </a>
+        </ul>
+        <div class="view-all-projects">
+          <a href="/projects" class="contact-btn">View All Projects &rarr;</a>
+        </div>
+      </div>
+    </section>
 
-        exploreBtn.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
-            cursor.style.backgroundColor = 'rgba(0, 255, 0, 0.5)';
-        });
+    <section id="contact" class="section cta-section">
+      <div class="container">
+        <h2>Let's Build Something Great</h2>
+        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out!</p>
+        <a href="mailto:contact@saifullahsiddique.in" class="contact-btn">Say Hello</a>
+      </div>
+    </section>
+  </main>
 
-        exploreBtn.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-            cursor.style.backgroundColor = 'var(--primary-glow)';
-        });
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/siddique-saifullah" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://instagram.com/saiflearns" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <p>&copy; 2025 Saifullah Siddique. Built with passion.</p>
+    </div>
+  </footer>
 
-        // --- NEW: Keyboard 'Enter' key functionality ---
-        document.addEventListener('keydown', function(event) {
-            // Check if the pressed key is 'Enter'
-            if (event.key === 'Enter') {
-                // Prevent default action (like submitting a form)
-                event.preventDefault(); 
-                // Redirect to the info page
-                window.location.href = '/info.html';
-            }
-        });
-    });
-   </script>
+  <img class="project-preview" src="" alt="Project preview image" loading="lazy">
+
+  <!-- FIX: Updated script path to reflect new assets/js/ folder -->
+  <script src="./assets/js/script.js" defer></script>
 </body>
 </html>
+

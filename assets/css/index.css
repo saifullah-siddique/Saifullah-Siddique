@@ -1,0 +1,450 @@
+/* ==========================================================================
+   1. Root Variables & Global Styles
+   ========================================================================== */
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-color: #050505;
+  --surface-color: #111111;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --primary-text: #EAEAEA;
+  --secondary-text: #888888;
+  --accent-color: #14B8A6; /* Vibrant Teal */
+  --accent-glow: rgba(20, 184, 166, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  font-family: 'Inter', sans-serif;
+  cursor: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Make links and buttons show the hand pointer */
+a, .contact-btn {
+  cursor: pointer;
+}
+
+
+/* ==========================================================================
+   2. Custom Cursor
+   ========================================================================== */
+
+.cursor-dot,
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out; /* Added opacity transition */
+}
+
+/* FIX: Class to hide cursor on hover of interactive elements */
+.cursor-dot.hidden,
+.cursor-glow.hidden {
+  opacity: 0;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color);
+}
+
+.cursor-glow {
+  width: 40px;
+  height: 40px;
+  background-image: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+}
+
+.cursor-dot.grow {
+  transform: translate(-50%, -50%) scale(4);
+}
+
+.cursor-glow.grow {
+  transform: translate(-50%, -50%) scale(2);
+}
+
+/* ==========================================================================
+   3. Header & Navigation
+   ========================================================================== */
+
+.main-header {
+  padding: 1.5rem 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+}
+
+.main-header.scrolled {
+  background-color: rgba(5, 5, 5, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem 0;
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--primary-text);
+  transition: font-size 0.3s ease;
+}
+
+.main-header.scrolled .logo {
+    font-size: 1.1rem;
+}
+
+.contact-btn {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 99px;
+  text-decoration: none;
+  color: var(--primary-text);
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease, padding 0.3s ease, font-size 0.3s ease;
+}
+
+.main-header.scrolled .contact-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.contact-btn:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+/* ==========================================================================
+   4. Page Sections
+   ========================================================================== */
+
+.section {
+  padding: 8rem 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--secondary-text);
+  margin-bottom: 2rem;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slide-in 1s ease-out;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--secondary-text);
+  margin-top: 1.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: slide-in 1s ease-out 0.2s;
+  animation-fill-mode: backwards;
+}
+
+/* About Section (Bento Grid) */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.bento-item {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.bento-item:hover {
+  transform: translateY(-5px);
+}
+
+.bento-item.profile {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.bento-item.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bento-item.profile h3 {
+  font-size: 1.5rem;
+}
+
+.bento-item.profile p {
+  color: var(--secondary-text);
+}
+
+.bento-item.focus {
+  grid-column: span 2;
+}
+
+.bento-item.focus p {
+  line-height: 1.8;
+}
+
+.bento-item.about {
+  grid-column: span 4;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--secondary-text);
+}
+
+/* Technology Section */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.tech-category {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.tech-category h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--secondary-text);
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  align-items: center;
+}
+
+.tech-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.tech-list i {
+  font-size: 1.5rem;
+  color: var(--secondary-text);
+}
+
+/* Projects Section */
+.project-list {
+  list-style: none;
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-item {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.project-item:hover {
+  background: var(--surface-color);
+}
+
+.project-item h3 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 600;
+}
+
+.project-item p {
+  color: var(--secondary-text);
+}
+
+.view-all-projects {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* CTA Section */
+.cta-section {
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  color: var(--secondary-text);
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   5. Footer
+   ========================================================================== */
+
+.main-footer {
+  padding: 4rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--secondary-text);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent-color);
+}
+
+/* ==========================================================================
+   6. Effects & Animations
+   ========================================================================== */
+
+.project-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 200px;
+  border-radius: 1rem;
+  object-fit: cover;
+  pointer-events: none;
+  opacity: 0;
+  /* FIX: Position preview to the side of the cursor instead of on top of it */
+  transform: translate(20px, 20px) scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 99;
+}
+
+.project-preview.visible {
+  opacity: 1;
+  /* FIX: Keep the side position when visible */
+  transform: translate(20px, 20px) scale(1);
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   7. Media Queries (Responsive Design)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bento-item.about {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+  .cursor-dot,
+  .cursor-glow {
+    display: none;
+  }
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-item.profile,
+  .bento-item.focus,
+  .bento-item.about {
+    grid-column: span 1;
+  }
+  .bento-item.profile {
+    flex-direction: column;
+    text-align: center;
+  }
+  .project-item h3 {
+    font-size: 1.5rem;
+  }
+}
+
