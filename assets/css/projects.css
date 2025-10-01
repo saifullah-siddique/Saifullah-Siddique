@@ -99,6 +99,28 @@ body {
     color: var(--bg-color);
 }
 
+/* go back link */
+.final-link {
+    text-align: center;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.final-link a {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    color: var(--secondary-text);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.final-link a:hover {
+    color: var(--primary-text);
+    transform: translateX(10px); /* moves the whole link */
+}
+
+
 .main-footer {
     padding: 4rem 2rem 2rem 2rem; /* Adjusted padding */
     text-align: center;
