@@ -1,0 +1,316 @@
+/* ==========================================================================
+   GLOBAL STYLES FOR ALL PROJECT CASE STUDY PAGES
+   ========================================================================== */
+
+/* --- 1.0 Design Tokens & Setup --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display.swap');
+
+:root {
+    --bg-color: #050505;
+    --surface-color: #111111;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --primary-text: #EAEAEA;
+    --secondary-text: #888888;
+    --accent-color: #14B8A6; /* Main theme's Teal */
+    --accent-glow: rgba(20, 184, 166, 0.3);
+}
+
+/* --- 2.0 Global Styles & Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--primary-text);
+    font-family: 'Inter', sans-serif;
+    cursor: none;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- 3.0 Reusable Components (Header, Footer, Cursor) --- */
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* --- [FIX] Updated header for a thinner design and shrink effect --- */
+.main-header {
+    padding: 1.2rem 0; /* Thinner by default */
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    transition: padding 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+    border-bottom: 1px solid transparent; /* Prevents content jump */
+}
+
+.main-header.scrolled {
+    padding: 0.6rem 0; /* Even thinner on scroll */
+    background-color: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.main-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-text);
+    transition: font-size 0.3s ease; /* Added transition for shrinking */
+}
+
+.main-header.scrolled .logo {
+    font-size: 1.1rem;
+}
+
+.contact-btn {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 99px;
+    text-decoration: none;
+    color: var(--primary-text);
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease, padding 0.3s ease, font-size 0.3s ease;
+}
+
+.main-header.scrolled .contact-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.contact-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.main-footer {
+    padding: 4rem 0 2rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: var(--secondary-text);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.cursor-dot, .cursor-glow {
+    position: fixed; top: 0; left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%; pointer-events: none; z-index: 9999;
+    transition: transform 0.2s ease-out, opacity 0.3s ease;
+}
+.cursor-dot { width: 8px; height: 8px; background-color: var(--accent-color); }
+.cursor-glow { width: 40px; height: 40px; background-image: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%); }
+.cursor-dot.hidden, .cursor-glow.hidden { opacity: 0; }
+
+/* --- 4.0 Project Page Specific Styles --- */
+.project-hero {
+    text-align: center;
+    padding: 8rem 0 3rem 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 4rem;
+}
+
+.project-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.6));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-hero .subtitle {
+    font-size: 1.25rem;
+    color: var(--secondary-text);
+    max-width: 650px;
+    margin: 0 auto 2.5rem auto;
+}
+
+.cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #10a08f;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-text);
+    border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--surface-color);
+    border-color: var(--accent-color);
+    transform: translateY(-2px); /* [ADD] Hover effect for consistency */
+}
+
+.project-image-container {
+    margin-bottom: 4rem;
+}
+
+.project-image-container img {
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.project-section {
+    margin-bottom: 3.5rem;
+}
+
+.project-section h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--primary-text);
+}
+
+.project-section p, .project-section li {
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    margin-bottom: 1rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.feature-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.feature-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.tech-item {
+    padding: 0.5rem 1rem;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--primary-text);
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* [ADD] Hover transition */
+}
+
+.tech-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* [ADD] Subtle shadow on hover */
+}
+
+/* --- [FIX] Back link section updated for two links --- */
+.page-navigation-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem; /* Add gap for wrapping on small screens */
+    align-items: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.page-navigation-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--secondary-text);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* --- [ADD] Rule to increase icon size --- */
+.page-navigation-links a i {
+    width: 20px;
+    height: 20px;
+}
+
+.page-navigation-links a:hover {
+    color: var(--primary-text);
+}
+
+.page-navigation-links .link-left:hover {
+    transform: translateX(-5px);
+}
+
+.page-navigation-links .link-right:hover {
+    transform: translateX(5px);
+}
+

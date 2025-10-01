@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Project Case Study: Instagram Profile Viewer | Saifullah Siddique</title>
+    <meta name="description" content="A deep dive into the Instagram Profile Viewer, a web application built by Saifullah Siddique using Node.js, Express, and EJS to demonstrate server-side rendering and API integration.">
+    <link rel="canonical" href="https://saifullahsiddique.in/projects/instagram-profile-viewer">
+    <meta name="author" content="Saifullah Siddique">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Case Study: Instagram Profile Viewer">
+    <meta property="og:description" content="A deep dive into a server-side rendered application built with Node.js, Express, and EJS.">
+    <meta property="og:image" content="https://saifullahsiddique.in/assets/images/project-instagram.webp">
+    <meta property="og:url" content="https://saifullahsiddique.in/projects/instagram-profile-viewer">
+    <meta property="og:site_name" content="Saifullah Siddique's Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project Case Study: Instagram Profile Viewer">
+    <meta name="twitter:description" content="A deep dive into a server-side rendered application built with Node.js, Express, and EJS.">
+    <meta name="twitter:image" content="https://saifullahsiddique.in/assets/images/project-instagram.webp">
+
+    <!-- Favicon Links (pointing to root) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <link rel="icon" href="../favicon.ico">
+
+    <!-- Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+
+    <!-- Link to the new Global Project CSS -->
+    <link rel="stylesheet" href="../assets/css/globalproject.css">
+
+    <!-- Structured Data (Schema.org for the Project) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Instagram Profile Viewer",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Any (Web browser)",
+      "url": "https://instagram-profile-viewer-oubw.onrender.com/",
+      "author": {
+        "@type": "Person",
+        "name": "Saifullah Siddique",
+        "url": "https://saifullahsiddique.in/"
+      },
+      "description": "A server-side rendered application designed to fetch and display public Instagram profile data via an external API.",
+      "image": "https://saifullahsiddique.in/assets/images/project-instagram.webp"
+    }
+    </script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="/" class="logo">Saifullah Siddique</a>
+            <a href="/#contact" class="contact-btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="project-hero">
+            <h1>Instagram Profile Viewer</h1>
+            <p class="subtitle">A server-side rendered application designed to fetch and display public Instagram profile data via an external API.</p>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="https://instagram-profile-viewer-oubw.onrender.com/" target="_blank" rel="noopener">
+                    <i data-feather="external-link"></i> Live Demo
+                </a>
+                <a class="btn btn-secondary" href="https://github.com/Saifullah-Siddique/Instagram-Profile-Viewer/blob/for-source/" target="_blank" rel="noopener">
+                    <i data-feather="github"></i> Source Code
+                </a>
+            </div>
+        </header>
+
+        <section class="project-image-container">
+            <img src="../assets/images/project-instagram.webp" alt="A screenshot of the Instagram Profile Viewer application interface.">
+        </section>
+
+        <section class="project-section" id="overview">
+            <h2>Project Overview</h2>
+            <p>As a developer focused on backend technologies, I created the Instagram Profile Viewer to showcase my ability to build practical, server-driven applications. This tool acts as a simple bridge between a user and a third-party API. A user enters a public Instagram username, and the application's backend communicates with the API to fetch and elegantly display key profile details like follower counts, bio, and recent posts.</p>
+        </section>
+
+        <section class="project-section" id="features">
+            <h2>Key Features</h2>
+            <ul class="feature-list">
+                <li><strong>Real-Time Data Retrieval:</strong> The application uses `node-fetch` to make live requests to the API, ensuring the data displayed is always up-to-date.</li>
+                <li><strong>Server-Side Rendering (SSR):</strong> By using EJS as a templating engine, the complete HTML page is generated on the server. This results in a fast initial load time and an SEO-friendly experience.</li>
+                <li><strong>Clean & Responsive Interface:</strong> The user interface is built with clean, semantic HTML and styled with CSS to provide a seamless and intuitive experience on both desktop and mobile devices.</li>
+                <li><strong>Graceful Error Handling:</strong> The backend includes logic to handle cases where an Instagram profile is not found or the API fails to respond, presenting a clear message to the user instead of a broken page.</li>
+            </ul>
+        </section>
+        
+        <section class="project-section" id="tech-stack">
+            <h2>Technology Stack</h2>
+            <p>The technology stack was carefully selected to create a lightweight but powerful server-side application. Each tool plays a specific and crucial role in the project's architecture.</p>
+            <div class="tech-stack">
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Express.js</span>
+                <span class="tech-item">EJS</span>
+                <span class="tech-item">RapidAPI</span>
+                <span class="tech-item">Node-fetch</span>
+                <span class="tech-item">CSS3</span>
+            </div>
+        </section>
+
+        <section class="project-section" id="learning">
+            <h2>Challenges & Learning</h2>
+            <p>This project was an excellent learning experience that presented several real-world challenges. A significant hurdle was fetching the profile picture; while the API successfully provided a direct URL, displaying the image was blocked, likely due to cross-origin restrictions. I attempted several workarounds, including indirect routes, which provided a valuable lesson in how platforms protect their assets.</p>
+            <p>Additionally, as a new learner, navigating and correctly setting up the third-party API was a challenge in itself. It reinforced the importance of carefully reading documentation and understanding asynchronous programming in Node.js. Overcoming these obstacles solidified my understanding of the entire request-response cycle and the complexities of working with external data sources.</p>
+        </section>
+        
+        <!-- [FIX] Replaced text arrows with larger, different icons -->
+        <div class="page-navigation-links">
+             <a href="/projects/" class="link-left"><i data-feather="arrow-left"></i> All Projects</a>
+             <a href="/" class="link-right">Back to Home <i data-feather="home"></i></a>
+        </div>
+    </main>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/siddique-saifullah" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://instagram.com/saiflearns" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p>&copy; 2025 Saifullah Siddique. All rights reserved.</p>
+    </footer>
+
+    <!-- Main JS file for cursor and header effects -->
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>
+
+
