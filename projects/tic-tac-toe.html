@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Project Case Study: Tic-Tac-Toe Game | Saifullah Siddique</title>
+    <meta name="description" content="A case study of a classic Tic-Tac-Toe game built by Saifullah Siddique, focusing on JavaScript logic for determining a winner.">
+    <link rel="canonical" href="https://saifullahsiddique.in/projects/tic-tac-toe-game">
+    <meta name="author" content="Saifullah Siddique">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Case Study: Tic-Tac-Toe Game by Saifullah Siddique">
+    <meta property="og:description" content="Discover the JavaScript logic behind building this timeless game, created by Saifullah Siddique.">
+    <meta property="og:image" content="https://saifullahsiddique.in/assets/images/project-tic-tac-toe.webp">
+    <meta property="og:url" content="https://saifullahsiddique.in/projects/tic-tac-toe-game">
+    <meta property="og:site_name" content="Saifullah Siddique's Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project Case Study: Tic-Tac-Toe Game by Saifullah Siddique">
+    <meta name="twitter:description" content="Discover the JavaScript logic behind building this timeless game, created by Saifullah Siddique.">
+    <meta name="twitter:image" content="https://saifullahsiddique.in/assets/images/project-tic-tac-toe.webp">
+
+    <!-- Browser Theme Color for Mobile -->
+    <meta name="theme-color" content="#14B8A6">
+
+    <!-- Favicon & App Icons (Consolidated) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="apple-mobile-web-app-title" content="Saifullah Siddique" />
+
+    <!-- Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+
+    <!-- Global and Custom Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/globalproject.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../assets/css/customprisma.css">
+
+    <!-- Structured Data (Schema.org for the Project) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Tic-Tac-Toe Game",
+      "applicationCategory": "Game",
+      "operatingSystem": "Any (Web browser)",
+      "url": "https://tic-tac-toe-gamee-one.vercel.app/",
+      "author": {
+        "@type": "Person",
+        "name": "Saifullah Siddique",
+        "url": "https://saifullahsiddique.in/"
+      },
+      "description": "A classic Tic-Tac-Toe game created with vanilla JavaScript to showcase game logic and DOM manipulation.",
+      "image": "https://saifullahsiddique.in/assets/images/project-tic-tac-toe.webp"
+    }
+    </script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="/" class="logo">Saifullah Siddique</a>
+            <a href="/#contact" class="contact-btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="project-hero">
+            <h1>Tic-Tac-Toe Game</h1>
+            <p class="subtitle">A web-based version of the timeless paper-and-pencil game, built with vanilla JavaScript to practice fundamental programming logic.</p>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="https://tic-tac-toe-gamee-one.vercel.app/" target="_blank" rel="noopener">
+                    <i data-feather="external-link"></i> Live Demo
+                </a>
+                <a class="btn btn-secondary" href="https://github.com/saifullah-siddique/TicTacToe" target="_blank" rel="noopener">
+                    <i data-feather="github"></i> Source Code
+                </a>
+            </div>
+        </header>
+
+        <section class="project-image-container">
+            <img src="../assets/images/project-TicTac.webp" alt="A screenshot of Saifullah Siddique's Tic-Tac-Toe Game.">
+        </section>
+
+        <section class="project-section" id="how-to-play">
+            <h2>How to Play</h2>
+            <p>Tic-Tac-Toe is a two-player game. The goal is simple: be the first to get three of your marks in a row.</p>
+            <ul class="feature-list">
+                <li><strong>Two Players:</strong> The first player is 'X' and the second player is 'O'.</li>
+                <li><strong>Take Turns:</strong> Players take turns clicking on an empty box to place their mark.</li>
+                <li><strong>Get Three in a Row:</strong> The first player to get three of their marks in a horizontal, vertical, or diagonal row wins the game.</li>
+                <li><strong>Draw Game:</strong> If all 9 boxes are filled and no player has won, the game is a draw.</li>
+                <li><strong>Reset:</strong> Click the "Reset Game" button to clear the board and play again.</li>
+            </ul>
+        </section>
+        
+        <section class="project-section" id="logic">
+            <h2>The JavaScript Logic Explained</h2>
+            <p>The logic for Tic-Tac-Toe revolves around checking the game board against a predefined set of winning combinations after every move. This is efficiently handled using a 2D array.</p>
+            
+            <div class="code-block-wrapper">
+                <button class="copy-code-btn" title="Copy Code">
+                    <i data-feather="copy"></i>
+                </button>
+                <pre><code class="language-javascript">
+// All 8 possible winning combinations
+const winPatterns = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+    [0, 4, 8], [2, 4, 6]             // Diagonals
+];
+
+// Function to check for a winner after each turn
+const checkWinner = () => {
+    // Loop through each winning pattern
+    for (let pattern of winPatterns) {
+        // Get the values from the 3 boxes in the current pattern
+        let pos1Val = boxes[pattern[0]].innerText;
+        let pos2Val = boxes[pattern[1]].innerText;
+        let pos3Val = boxes[pattern[2]].innerText;
+
+        // If the boxes are not empty
+        if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
+            // Check if all three boxes have the same value
+            if (pos1Val === pos2Val && pos2Val === pos3Val) {
+                // We have a winner!
+                showWinner(pos1Val);
+                return; // Exit the function
+            }
+        }
+    }
+};
+</code></pre>
+            </div>
+        </section>
+
+        <section class="project-section" id="tech-stack">
+            <h2>Technology Stack</h2>
+            <p>This game was built using only the core technologies of the web, demonstrating strong foundational skills.</p>
+            <div class="tech-stack">
+                <span class="tech-item">JavaScript (ES6+)</span>
+                <span class="tech-item">HTML5</span>
+                <span class="tech-item">CSS3</span>
+            </div>
+        </section>
+
+        <section class="project-section" id="learning">
+            <h2>Challenges & Learning</h2>
+            <p>Developing Tic-Tac-Toe was a fantastic exercise in logical thinking. The most interesting challenge was figuring out an efficient way to check for a winner. Storing all winning combinations in a 2D array and then iterating through it proved to be a clean and scalable solution. This approach was a great introduction to working with more complex data structures in JavaScript.</p>
+            <p>This project also helped me master event handling, as each box needed its own click listener that only fired once. Implementing the turn-based logic (switching between 'X' and 'O') and managing the game state (e.g., disabling the board after a win) were key learning points that are applicable to almost any interactive web application.</p>
+        </section>
+        
+        <div class="page-navigation-links">
+             <a href="/projects.html" class="link-left"><i data-feather="arrow-left"></i> All Projects</a>
+             <a href="/" class="link-right">Back to Home <i data-feather="home"></i></a>
+        </div>
+    </main>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/siddique-saifullah" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://instagram.com/saiflearns" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p>&copy; 2025 Saifullah Siddique. All rights reserved.</p>
+    </footer>
+
+    <!-- Main JS file for cursor and header effects -->
+    <script src="../assets/js/script.js"></script>
+    <!-- Prism.js for Code Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Script for Copy to Clipboard Functionality -->
+    <script src="../assets/js/copycode.js"></script>
+</body>
+</html>

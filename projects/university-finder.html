@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Project Case Study: University Finder | Saifullah Siddique</title>
+    <meta name="description" content="A case study on the University Finder, a foundational project by Saifullah Siddique demonstrating asynchronous JavaScript and first-time API integration.">
+    <link rel="canonical" href="https://saifullahsiddique.in/projects/university-finder">
+    <meta name="author" content="Saifullah Siddique">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Case Study: University Finder">
+    <meta property="og:description" content="Exploring a first-time API project and the important lessons learned about web security and asynchronous JavaScript.">
+    <meta property="og:image" content="https://saifullahsiddique.in/assets/images/project-university.webp">
+    <meta property="og:url" content="https://saifullahsiddique.in/projects/university-finder">
+    <meta property="og:site_name" content="Saifullah Siddique's Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project Case Study: University Finder">
+    <meta name="twitter:description" content="Exploring a first-time API project and the important lessons learned about web security and asynchronous JavaScript.">
+    <meta name="twitter:image" content="https://saifullahsiddique.in/assets/images/project-university.webp">
+
+    <!-- Browser Theme Color for Mobile -->
+    <meta name="theme-color" content="#14B8A6">
+
+    <!-- Favicon & App Icons (Consolidated) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="apple-mobile-web-app-title" content="Saifullah Siddique" />
+
+    <!-- Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+
+    <!-- Global and Custom Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/globalproject.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../assets/css/customprisma.css">
+
+    <!-- Structured Data (Schema.org for the Project) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "University Finder",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Any (Web browser)",
+      "url": "http://saifullahsiddique.gt.tc/UniversityFinder/",
+      "author": {
+        "@type": "Person",
+        "name": "Saifullah Siddique",
+        "url": "https://saifullahsiddique.in/"
+      },
+      "description": "A simple web tool to search for universities in any country using the Hipolabs Universities API.",
+      "image": "https://saifullahsiddique.in/assets/images/project-university.webp"
+    }
+    </script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="/" class="logo">Saifullah Siddique</a>
+            <a href="/#contact" class="contact-btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="project-hero">
+            <h1>University Finder</h1>
+            <p class="subtitle">A client-side web application built with vanilla JavaScript to search for universities worldwide using a public API.</p>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="http://saifullahsiddique.gt.tc/UniversityFinder/" target="_blank" rel="noopener">
+                    <i data-feather="external-link"></i> Live Demo
+                </a>
+                <a class="btn btn-secondary" href="https://github.com/saifullah-siddique/University-Finder" target="_blank" rel="noopener">
+                    <i data-feather="github"></i> Source Code
+                </a>
+            </div>
+        </header>
+
+        <section class="project-image-container">
+            <img src="../assets/images/project-university.webp" alt="A screenshot of the University Finder application interface.">
+        </section>
+
+        <section class="project-section" id="overview">
+            <h2>Project Overview</h2>
+            <p>The University Finder was my first project diving into the world of APIs. It is a simple, yet functional tool that allows users to enter a country's name and retrieve a list of universities from that country. The primary goal was to learn and implement asynchronous JavaScript to fetch data from an external source (the Hipolabs Universities API) and dynamically display it on the page, demonstrating a fundamental skill for any modern web developer.</p>
+        </section>
+        
+        <section class="project-section" id="logic">
+            <h2>The JavaScript Logic Explained</h2>
+            <p>The core of this application is the `getinfo` function, which handles the API request. It uses an `async/await` pattern to fetch data from the Hipolabs API based on the user's query. A key part of the logic is the `AbortController`, which cancels any previous pending request if the user types something new, preventing unnecessary API calls and race conditions.</p>
+            
+            <div class="code-block-wrapper">
+                <button class="copy-code-btn" title="Copy Code">
+                    <i data-feather="copy"></i>
+                </button>
+                <pre><code class="language-javascript">
+// AbortController to cancel previous fetch requests
+let controller;
+
+async function getinfo(query, region) {
+    if (!query.trim()) return;
+
+    // Abort the previous API call if it exists
+    if (controller) controller.abort();
+    controller = new AbortController();
+
+    // The API endpoint. Note: This uses 'http', which is the source of the problem.
+    const api = "http://universities.hipolabs.com/search?";
+    const url = `${api}name=${encodeURIComponent(query)}&country=${encodeURIComponent(region)}`;
+    
+    try {
+        apistatus.innerText = "Loading...";
+        let result = await fetch(url, { signal: controller.signal });
+        let info =  await result.json();
+        
+        apistatus.innerText = "";
+        addData(info); // Function to display the data in the UI
+
+    } catch (err) {
+        // Don't show an error if the request was intentionally aborted
+        if (err.name === "AbortError") return;
+
+        apistatus.innerText = "Could not fetch data.";
+        console.error(err);
+    }
+}
+</code></pre>
+            </div>
+        </section>
+
+        <section class="project-section" id="tech-stack">
+            <h2>Technology Stack</h2>
+            <p>This project focuses on core frontend technologies to demonstrate a solid understanding of the fundamentals.</p>
+            <div class="tech-stack">
+                <span class="tech-item">JavaScript (ES6+)</span>
+                <span class="tech-item">Fetch API</span>
+                <span class="tech-item">HTML5</span>
+                <span class="tech-item">CSS3</span>
+                <span class="tech-item">Hipolabs API</span>
+            </div>
+        </section>
+
+        <section class="project-section" id="learning">
+            <h2>Challenges & Learning</h2>
+            <p>As my first project involving an API, this was a significant learning milestone. The biggest challenge I encountered was a classic web security issue: **mixed content errors**. As you can see in the code, the Hipolabs API is served over the insecure `http` protocol. When the project is hosted on a secure `https` domain (which is standard practice today), modern browsers block the `http` API request to protect the user. This mismatch caused the application to fail in many environments.</p>
+            <p>Troubleshooting this issue was an invaluable lesson. It taught me the critical importance of HTTPS and why modern applications must rely on secure connections. While the issue persists due to the API's limitation, understanding the "why" behind it was the most important takeaway. This project solidified my understanding of asynchronous JavaScript, handling promises, and the practical realities of integrating with third-party services.</p>
+        </section>
+        
+        <div class="page-navigation-links">
+             <a href="/projects/" class="link-left"><i data-feather="arrow-left"></i> All Projects</a>
+             <a href="/" class="link-right">Back to Home <i data-feather="home"></i></a>
+        </div>
+    </main>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/siddique-saifullah" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://instagram.com/saiflearns" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p>&copy; 2025 Saifullah Siddique. All rights reserved.</p>
+    </footer>
+
+    <!-- Main JS file for cursor and header effects -->
+    <script src="../assets/js/script.js"></script>
+    <!-- Prism.js for Code Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Script for Copy to Clipboard Functionality -->
+    <script src="../assets/js/copycode.js"></script>
+</body>
+</html>
+
