@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<urlset xmlns="[suspicious link removed]">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<!--
-Homepage: Highest priority as it is the main page.
--->
+  <!-- Homepage -->
+  <url>
+    <loc>https://saifullahsiddique.in/</loc>
+    <lastmod>2025-10-02</lastmod>
+    <priority>1.0</priority>
+  </url>
 
-<url>
-<loc>https://saifullahsiddique.in/</loc>
-<lastmod>2025-10-01</lastmod>
-<priority>1.0</priority>
-</url>
-
-<!--
-Future Projects Page: Included so search engines know it's planned.
--->
-
-<url>
-<loc>https://saifullahsiddique.in/projects</loc>
-<lastmod>2025-10-01</lastmod>
-<priority>0.8</priority>
-</url>
+  <!-- Future Projects Page -->
+  <url>
+    <loc>https://saifullahsiddique.in/projects</loc>
+    <lastmod>2025-10-02</lastmod>
+    <priority>0.8</priority>
+  </url>
 
 </urlset>
