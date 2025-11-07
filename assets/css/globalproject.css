@@ -203,6 +203,13 @@ body {
     transform: translateY(-2px); /* [ADD] Hover effect for consistency */
 }
 
+/* For Disabled btn */
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .project-image-container {
     margin-bottom: 4rem;
 }

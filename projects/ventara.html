@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Project Case Study: Ventara | Saifullah Siddique</title>
+    <meta name="description" content="A deep dive into Ventara, a full-stack Airbnb-inspired platform built by Saifullah Siddique with Node.js, Express, MongoDB, and Cloudinary.">
+    <link rel="canonical" href="https://saifullahsiddique.in/projects/ventara.html">
+    <meta name="author" content="Saifullah Siddique">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Case Study: Ventara | Saifullah Siddique">
+    <meta property="og:description" content="Explore a full-stack MERN-style (with EJS) web app featuring authentication, image uploads, and map integration.">
+    <meta property="og:image" content="https://saifullahsiddique.in/assets/images/project-ventara.webp">
+    <meta property="og:url" content="https://saifullahsiddique.in/projects/ventara.html">
+    <meta property="og:site_name" content="Saifullah Siddique's Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project Case Study: Ventara | Saifullah Siddique">
+    <meta name="twitter:description" content="Explore a full-stack MERN-style (with EJS) web app featuring authentication, image uploads, and map integration.">
+    <meta name="twitter:image" content="https://saifullahsiddique.in/assets/images/project-ventara.webp">
+
+    <!-- Browser Theme Color for Mobile -->
+    <meta name="theme-color" content="#14B8A6">
+
+    <!-- Favicon & App Icons (Consolidated) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="apple-mobile-web-app-title" content="Saifullah Siddique" />
+
+    <!-- Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+
+    <!-- Global and Custom Stylesheets -->
+    <link rel="stylesheet" href="../assets/css/globalproject.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../assets/css/customprisma.css">
+
+    <!-- Structured Data (Schema.org for the Project) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Ventara",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Any (Web browser)",
+      "url": "https://ventara-5wuv.onrender.com",
+      "author": {
+        "@type": "Person",
+        "name": "Saifullah Siddique",
+        "url": "https://saifullahsiddique.in/"
+      },
+      "description": "A full-stack web application inspired by Airbnb, designed to let users discover, host, edit, and manage travel listings.",
+      "image": "https://saifullahsiddique.in/assets/images/project-ventara.webp",
+      "softwareVersion": "1.0.0",
+      "programmingLanguage": ["JavaScript", "Node.js", "EJS"]
+    }
+    </script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-content">
+            <a href="/" class="logo">Saifullah Siddique</a>
+            <a href="/#contact" class="contact-btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="project-hero">
+            <h1>Ventara</h1>
+            <p class="subtitle">A full-stack Airbnb-inspired platform built with Node.js, Express, and MongoDB, featuring secure auth, cloud image uploads, and map integration.</p>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="https://ventara-5wuv.onrender.com" target="_blank" rel="noopener">
+                    <i data-feather="external-link"></i> Live Demo
+                </a>
+                <a class="btn btn-secondary" href="https://github.com/saifullah-siddique/Ventara" target="_blank" rel="noopener">
+                    <i data-feather="github"></i> Source Code
+                </a>
+            </div>
+        </header>
+
+        <section class="project-image-container">
+            <!-- TODO: Aapko 'project-ventara.webp' naam ki ek image 'assets/images/' folder mein add karni hogi -->
+            <img src="../assets/images/project-ventara.webp" alt="A screenshot of the Ventara application interface.">
+        </section>
+
+        <section class="project-section" id="overview">
+            <h2>Project Overview</h2>
+            <p>Ventara is a full-stack web application inspired by Airbnb, designed to let users discover, host, edit, and manage travel listings. Built with the MERN-style architecture (MongoDB + Express + Node) using EJS templating, it delivers a seamless and responsive booking-like experience for travel enthusiasts and hosts. Users can browse listings, view property details, sign up/log in, manage their own listings, and leave reviews.</p>
+        </section>
+        
+        <section class="project-section" id="features">
+            <h2>Core Features</h2>
+            <ul class="feature-list">
+                <li><strong>Authentication & Security:</strong> Secure user registration and login using Passport.js. Passwords are salted and hashed, and persistent sessions are managed with `connect-mongo`.</li>
+                <li><strong>Cloud Image Management:</strong> `Multer` handles form uploads, while `Cloudinary` provides cloud-based storage, optimization, and delivery of all listing images.</li>
+                <li><strong>Database & Validation:</strong> Built on MongoDB with Mongoose for schema definition. `Joi` is used for server-side validation to ensure all data is secure and structured.</li>
+                <li><strong>Search & Filtering:</strong> Smart fuzzy search implemented with `Fuse.js` for case-insensitive queries, alongside category filters to enhance discovery.</li>
+                <li><strong>Interactive Maps:</strong> `Mapbox SDK` integration visualizes the location of each listing, providing essential context to users.</li>
+                <li><strong>Dynamic CRUD Operations:</strong> Users have full control to Create, Read, Update, and Delete their own listings, including image uploads and real-time form validation.</li>
+            </ul>
+        </section>
+
+        <section class="project-section" id="logic">
+            <h2>The Logic: Image Uploads with Multer & Cloudinary</h2>
+            <p>A key part of this full-stack app is handling image uploads. This logic shows how Express, Multer, and Cloudinary work together to receive a file from a user, upload it to the cloud, and save the URL to MongoDB—all in one route handler.</p>
+            
+            <div class="code-block-wrapper">
+                <button class="copy-code-btn" title="Copy Code">
+                    <i data-feather="copy"></i>
+                </button>
+                <pre><code class="language-javascript">
+// 1. Setup Cloudinary Storage (cloudinary/index.js)
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.CLOUD_API_KEY,
+    api_secret: process.env.CLOUD_API_SECRET
+});
+
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'Ventara',
+        allowedFormats: ['jpeg', 'png', 'jpg']
+    }
+});
+
+// 2. Create Multer Middleware (middleware.js)
+const multer = require('multer');
+const upload = multer({ storage });
+
+// 3. Use Middleware in Express Route (routes/listings.js)
+router.post(
+    '/',
+    isLoggedIn,
+    upload.single('listing[image]'), // Multer processes the image first
+    validateListing,
+    async (req, res) => {
+        // req.file now contains the Cloudinary data
+        let listing = new Listing(req.body.listing);
+        listing.owner = req.user._id;
+        
+        // Save the image URL from Cloudinary to the new listing
+        listing.image = { url: req.file.path, filename: req.file.filename };
+        
+        await listing.save();
+        req.flash('success', 'Successfully created a new listing!');
+        res.redirect(`/listings/${listing._id}`);
+    }
+);
+</code></pre>
+            </div>
+        </section>
+
+        <section class="project-section" id="tech-stack">
+            <h2>Technology Stack</h2>
+            <p>This project was built with a modern MERN-style backend and a server-side rendered frontend, utilizing a wide range of powerful Node.js packages.</p>
+            <div class="tech-stack">
+                <span class="tech-item">Node.js</span>
+                <span class="tech-item">Express.js</span>
+                <span class="tech-item">MongoDB</span>
+                <span class="tech-item">Mongoose</span>
+                <span class="tech-item">EJS / EJS-Mate</span>
+                <span class="tech-item">Passport.js</span>
+                <span class="tech-item">Cloudinary</span>
+                <span class="tech-item">Multer</span>
+                <span class="tech-item">Mapbox SDK</span>
+                <span class="tech-item">Joi</span>
+                <span class="tech-item">Fuse.js</span>
+                <span class="tech-item">Connect-Flash</span>
+            </div>
+        </section>
+
+        <section class="project-section" id="learning">
+            <h2>Learning Outcomes</h2>
+            <p>Ventara was a comprehensive project that solidified my full-stack development skills. I mastered RESTful architecture with Express.js and learned to implement a complete authentication system from scratch. Handling image uploads to a cloud service like Cloudinary was a significant challenge that taught me how to work with multipart forms and third-party storage APIs.</p>
+            <p>This project reflects a complete skill set: from backend logic and database management with MongoDB to secure authentication and a clean, dynamic UI with EJS. It demonstrates my ability to design and build a scalable, feature-rich web application from the ground up.</p>
+        </section>
+        
+        <div class="page-navigation-links">
+             <a href="/projects/" class="link-left"><i data-feather="arrow-left"></i> All Projects</a>
+             <a href="/" class="link-right">Back to Home <i data-feather="home"></i></a>
+        </div>
+    </main>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/siddique-saifullah" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://instagram.com/saiflearns" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p>&copy; 2025 Saifullah Siddique. All rights reserved.</p>
+    </footer>
+
+    <!-- Main JS file for cursor and header effects -->
+    <script src="../assets/js/script.js"></script>
+    <!-- Prism.js for Code Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <!-- Script for Copy to Clipboard Functionality -->
+    <script src="../assets/js/copycode.js"></script>
+</body>
+</html>
