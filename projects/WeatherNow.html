@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Case Study: Weather Now | Saifullah Siddique</title>
+    <meta name="description" content="A real-time weather tracking application built by Saifullah Siddique using React, Vite, Material UI, and OpenWeatherMap API.">
+    <link rel="canonical" href="https://saifullahsiddique.in/projects/weather-now.html">
+    <meta name="author" content="Saifullah Siddique">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Project Case Study: Weather Now | Saifullah Siddique">
+    <meta property="og:description" content="A responsive weather dashboard featuring geolocation, dual-API integration, and a modern Material UI design.">
+    <meta property="og:image" content="https://saifullahsiddique.in/assets/images/project-weather.webp">
+    <meta property="og:url" content="https://saifullahsiddique.in/projects/weather-now.html">
+    <meta property="og:site_name" content="Saifullah Siddique's Portfolio">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Project Case Study: Weather Now | Saifullah Siddique">
+    <meta name="twitter:description" content="A responsive weather dashboard featuring geolocation, dual-API integration, and a modern Material UI design.">
+    <meta name="twitter:image" content="https://saifullahsiddique.in/assets/images/project-weather.webp">
+
+    <meta name="theme-color" content="#14B8A6">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="apple-mobile-web-app-title" content="Saifullah Siddique" />
+
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js" defer></script>
+
+    <link rel="stylesheet" href="../assets/css/globalproject.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="../assets/css/customprisma.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Weather Now",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Any (Web browser)",
+      "url": "https://weather-now-here.vercel.app/",
+      "author": {
+        "@type": "Person",
+        "name": "Saifullah Siddique",
+        "url": "https://saifullahsiddique.in/"
+      },
+      "description": "A real-time weather dashboard using React and Material UI, featuring auto-geolocation and detailed climatic metrics.",
+      "image": "https://saifullahsiddique.in/assets/images/project-weather.webp",
+      "softwareVersion": "1.0.0",
+      "programmingLanguage": ["JavaScript", "React", "Vite"]
+    }
+    </script>
+</head>
+<body>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="/" class="logo">Saifullah Siddique</a>
+            <a href="/#contact" class="contact-btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <header class="project-hero">
+            <h1>Weather Now</h1>
+            <p class="subtitle">A lightning-fast weather dashboard built with React and Material UI, delivering real-time climatic data through a clean, responsive interface.</p>
+            <div class="cta-group">
+                <a class="btn btn-primary" href="https://weather-now-here.vercel.app/" target="_blank" rel="noopener">
+                    <i data-feather="external-link"></i> Live Demo
+                </a>
+                <a class="btn btn-secondary" href="https://github.com/saifullah-siddique/weather-app" target="_blank" rel="noopener">
+                    <i data-feather="github"></i> Source Code
+                </a>
+            </div>
+        </header>
+
+        <section class="project-image-container">
+            <!-- <img src="../assets/images/project-weather.webp" alt="A screenshot of the Weather Now application interface."> -->
+        </section>
+
+        <section class="project-section" id="overview">
+            <h2>Project Overview</h2>
+            <p>Weather Now is a sleek, single-page application (SPA) designed to provide instant weather updates for any location globally. By leveraging the speed of Vite and the robust component library of Material UI, the app ensures a seamless user experience. It features a dual-API architecture, using OpenStreetMap's Nominatim service for accurate geocoding and OpenWeatherMap for detailed meteorological data.</p>
+        </section>
+
+        <section class="project-section" id="features">
+            <h2>Core Features</h2>
+            <ul class="feature-list">
+                <li><strong>Auto-Geolocation:</strong> Automatically detects the user's location on startup using the browser's Geolocation API to display local weather instantly.</li>
+                <li><strong>Dual-API Integration:</strong> Combines Nominatim (OpenStreetMap) for precise coordinate lookup with OpenWeatherMap for climate data.</li>
+                <li><strong>Material UI Design:</strong> Utilizes `@mui/material` components like Cards and Typography for a polished, accessible, and responsive UI.</li>
+                <li><strong>Detailed Metrics:</strong> Displays temperature, humidity, visibility, wind speed, sunrise/sunset times, and "feels like" temperature.</li>
+                <li><strong>Robust Error Handling:</strong> Gracefully manages invalid city names and network errors with user-friendly feedback.</li>
+            </ul>
+        </section>
+
+        <section class="project-section" id="logic">
+            <h2>The Logic: Chained API Requests</h2>
+            <p>A key challenge in weather apps is converting a city name into coordinates before fetching weather data. This logic demonstrates how I chained two asynchronous requests: first to `Nominatim` to get the latitude/longitude, and then to `OpenWeatherMap` for the actual data, all while managing loading states.</p>
+            
+            <div class="code-block-wrapper">
+                <button class="copy-code-btn" title="Copy Code">
+                    <i data-feather="copy"></i>
+                </button>
+                <pre><code class="language-javascript">// SearchBox.jsx - Chained Async Operations
+
+const GEO_CODE_API = "https://nominatim.openstreetmap.org/search";
+const WEATHER_API = "https://api.openweathermap.org/data/2.5/weather";
+
+// 1. Fetch Coordinates first (Geocoding)
+const getCordinates = async(city) => {
+    try {
+        const res = await fetch(`${GEO_CODE_API}?q=${city}&format=json`);
+        const data = await res.json(); 
+        let {lat, lon} = data[0];
+        return {lat, lon};
+    } catch (err) {
+        throw err;
+    }
+}
+
+// 2. Fetch Weather using Coordinates
+let getWeatherInfo = async(lat, lon, city) => {
+    try {
+        const res = await fetch(`${WEATHER_API}?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`);
+        const jsonRespose = await res.json();
+        
+        // ... processing data (formatting time, etc.)
+        
+        return result;
+    } catch (err) {
+        throw err;
+    }
+}
+
+// 3. Main Handler
+const handleGetWeather = async(city) => {
+    if(!city) return ;
+    try {
+        // Chain the requests: City -> Coords -> Weather
+        let {lat, lon} = await getCordinates(city);
+        let result = await getWeatherInfo(lat, lon, city);
+        updateInfo(result); // Update React State
+    } catch (err) {
+        setError(true);
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="project-section" id="tech-stack">
+            <h2>Technology Stack</h2>
+            <p>This project uses a modern frontend stack focused on performance and component reusability.</p>
+            <div class="tech-stack">
+                <span class="tech-item">React.js (v19)</span>
+                <span class="tech-item">Vite</span>
+                <span class="tech-item">Material UI (MUI)</span>
+                <span class="tech-item">OpenWeatherMap API</span>
+                <span class="tech-item">Nominatim API</span>
+                <span class="tech-item">Geolocation API</span>
+                <span class="tech-item">Emotion (CSS-in-JS)</span>
+            </div>
+        </section>
+
+        <section class="project-section" id="learning">
+            <h2>Learning Outcomes</h2>
+            <p>Building Weather Now provided deep insights into handling asynchronous JavaScript and chaining multiple API requests. I learned to effectively use `useEffect` for triggering initial data fetches based on user location and `useState` for managing complex data objects. Implementing Material UI taught me the importance of using a design system for consistent theming and responsiveness across devices.</p>
+        </section>
+        
+        <div class="page-navigation-links">
+             <a href="/projects/" class="link-left"><i data-feather="arrow-left"></i> All Projects</a>
+             <a href="/" class="link-right">Back to Home <i data-feather="home"></i></a>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Saifullah-Siddique" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/siddique-saifullah" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://instagram.com/saiflearns" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p>&copy; 2025 Saifullah Siddique. All rights reserved.</p>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../assets/js/copycode.js"></script>
+</body>
+</html>
